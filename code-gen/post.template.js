@@ -3,16 +3,9 @@
  *
  * ${parameters.docs}
  */
-function ${jsMethod}(apiKey, ${parameters.names}) {
+${jsMethod}(${parameters.namesList}) {
     let parameters = {${parameters.object}};
-    checkParameters(parameters, ${parameters.namesArray})
-    return request({
-        method: 'POST',
-        uri: uris['${name}'],
-        body: parameters,
-        headers: {
-            'x-api-key': this.apiKey
-        },
-        json: true
-    });
+    validate(parameters, ${parameters.namesArray});
+    let uri = uris['${name}'];
+    return this.post(uri, parameters);
 }

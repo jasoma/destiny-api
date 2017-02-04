@@ -18,6 +18,10 @@ class Parameters {
         return _.map(this.values, 'name');
     }
 
+    get namesList() {
+        return this.names.join(', ');
+    }
+
     get namesArray() {
         let quoted = _.map(this.names, n => `'${n}'`);
         return `[${quoted.join(', ')}]`;
@@ -25,7 +29,7 @@ class Parameters {
 
     get object() {
         let assignments = _.map(this.names, n => `${n}: ${n}`);
-        return assignments.join(",\n");
+        return assignments.join(", ");
     }
 
     get docs() {
