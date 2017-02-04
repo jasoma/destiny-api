@@ -51,39 +51,14 @@ class EnpointDefinition {
 
 }
 
-const acorn = require('acorn');
-const astring = require('astring');
-const astravel = require('astravel');
-
-function prettify(code) {
-    var comments = [];
-    let ast = acorn.parse(code, {
-        ecmaVersion: 6,
-        locations: true,
-        onComment: comments
-    });
-    astravel.attachComments(ast, comments);
-    return astring(ast, {
-        indent: '    ',
-        lineEnd: '\n',
-        comments: true
-    });
-}
-
-let functionTemplate = fs.readFileSync('code-gen/api-method.template.js', 'utf-8');
+const Template = require('./code-gen/template')
+let methodTemplate = new Template('./code-gen/method.template.js')
 
 for (let entry of config.endpoints) {
 
     let def = new EnpointDefinition(entry);
-    def.host = config.host
-    let outputLines = [];
-
-    for (let line of functionTemplate.split("\n")) {
-        let lineTemplate = _.template(line);
-        outputLines.push(lineTemplate(def));
-    }
-
-    let code = outputLines.join('\n');
+    def.host = config.host;
+    let code = methodTemplate.render(def, true);
     fs.writeFileSync(`src/${def.name}.js`, code, 'utf-8');
 }
 
