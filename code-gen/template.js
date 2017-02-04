@@ -15,7 +15,7 @@ class Template {
         return this.template(context);
     }
 
-    renderPretty(context) {
+    renderCode(context) {
         return prettify(this.template(context));
     }
 }

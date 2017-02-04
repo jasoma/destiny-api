@@ -54,12 +54,16 @@ const fs = require('fs');
 const Template = require('./code-gen/template')
 const endpoints = require('./code-gen/endpoints');
 
+let methodTemplates = {
+    get: new Template('./code-gen/get.template.js'),
+    post: new Template('./code-gen/post.template.js'),
+}
+
 let config = endpoints.load('endpoints.yml');
-let methodTemplate = new Template('./code-gen/method.template.js');
 
 for (let definition of config.endpoints) {
-    definition.host = config.host;
-    let code = methodTemplate.renderPretty(definition);
+    let template = methodTemplates[definition.httpMethod];
+    let code = template.renderCode(definition);
     fs.writeFileSync(`build/${definition.name}.fragment`, code, 'utf-8');
 }
 
