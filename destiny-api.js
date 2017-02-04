@@ -122,7 +122,7 @@ class DestinyApi {
         let uri = uris['account'](parameters);
         return this.get(uri);
     }
-    
+
     /**
      * Loads recent activities for a character
      *
@@ -136,7 +136,7 @@ class DestinyApi {
         let uri = uris['activities'](parameters);
         return this.get(uri);
     }
-    
+
     /**
      * Loads the activity history for a character
      *
@@ -151,7 +151,7 @@ class DestinyApi {
         let uri = uris['activity-history'](parameters);
         return this.get(uri);
     }
-    
+
     /**
      * Loads the post-game carnage report for a particular activity
      *
@@ -163,7 +163,7 @@ class DestinyApi {
         let uri = uris['carnage-report'](parameters);
         return this.get(uri);
     }
-    
+
     /**
      * Loads the details of a single character
      *
@@ -177,7 +177,7 @@ class DestinyApi {
         let uri = uris['character'](parameters);
         return this.get(uri);
     }
-    
+
     /**
      * Equip an item to a characters
      *
@@ -191,7 +191,7 @@ class DestinyApi {
         let uri = uris['equip'];
         return this.post(uri, parameters);
     }
-    
+
     /**
      * Loads the item inventory for a character
      *
@@ -205,7 +205,7 @@ class DestinyApi {
         let uri = uris['inventory'](parameters);
         return this.get(uri);
     }
-    
+
     /**
      * Loads the progression details for a character
      *
@@ -219,7 +219,7 @@ class DestinyApi {
         let uri = uris['progression'](parameters);
         return this.get(uri);
     }
-    
+
     /**
      * Searches for player accounts based on the username of the account
      *
@@ -232,9 +232,9 @@ class DestinyApi {
         let uri = uris['search'](parameters);
         return this.get(uri);
     }
-    
+
     /**
-     * 
+     *
      *
      * @param membershipType - Which console network the account belongs to
      * @param characterId - the id for the character in the account
@@ -247,7 +247,7 @@ class DestinyApi {
         let uri = uris['transfer-item'];
         return this.post(uri, parameters);
     }
-    
+
 }
 
 module.exports = DestinyApi;

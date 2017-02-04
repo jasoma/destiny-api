@@ -28,7 +28,7 @@ endpoints:
   - activities:
       method: get
       path: ${membershipType}/Account/${membershipId}/Character/${characterId}/Activities/
-      description: Loads recent activities for a character
+      description: Loads all activities available to a character
       parameters:
           - membershipType: Which console network the account belongs to
           - membershipId: The bungie id for the account
@@ -36,7 +36,7 @@ endpoints:
 
   - activity-history:
       method: get
-      path: /Stats/ActivityHistory/${membershipType}/${membershipId}/${characterId}/?definitions=true&mode=${mode}
+      path: Stats/ActivityHistory/${membershipType}/${membershipId}/${characterId}/?definitions=true&mode=${mode}
       description: Loads the activity history for a character
       parameters:
           - membershipType: Which console network the account belongs to
@@ -46,7 +46,7 @@ endpoints:
 
   - carnage-report:
       method: get
-      path: /Stats/PostGameCarnageReport/${activityId}/
+      path: Stats/PostGameCarnageReport/${activityId}/
       description: Loads the post-game carnage report for a particular activity
       parameters:
           - activityId: The id of the activity to get the carnage report for
