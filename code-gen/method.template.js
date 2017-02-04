@@ -1,15 +1,15 @@
 /**
  * ${description}
  *
- * ${parameterDocs}
+ * ${parameters.docs}
  */
-function ${jsMethod}(apiKey, ${parameterNames}) {
+function ${jsMethod}(apiKey, ${parameters.names}) {
+    let parameters = {${parameters.object}};
+    checkParameters(parameters, ${parameters.namesArray})
     return request({
-        uri: template({
-            ${parameterObject}
-        }),
+        uri: uris['${name}'](parameters),
         headers: {
-            'x-api-key': apiKey
+            'x-api-key': this.apiKey
         },
         json: true
     });
