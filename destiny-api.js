@@ -5,13 +5,13 @@ const request = require('request-promise');
 
 const uris = {
     "search": _.template('http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/${membershipType}/${name}'),
-    "account": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}'),
+    "account": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}/Summary'),
     "character": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}/Character/${characterId}'),
-    "activities": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}/Character/${characterId}/Activities/'),
-    "activity-history": _.template('http://www.bungie.net/Platform/Destiny//Stats/ActivityHistory/${membershipType}/${membershipId}/${characterId}/?definitions=true&mode=${mode}'),
-    "carnage-report": _.template('http://www.bungie.net/Platform/Destiny//Stats/PostGameCarnageReport/${activityId}/'),
-    "inventory": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}/Character/${characterId}/Inventory/'),
-    "progression": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}/Character/${characterId}/Progression/'),
+    "activities": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}/Character/${characterId}/Activities'),
+    "activity-history": _.template('http://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/${membershipType}/${membershipId}/${characterId}'),
+    "carnage-report": _.template('http://www.bungie.net/Platform/Destiny/Stats/PostGameCarnageReport/${activityId}'),
+    "inventory": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}/Character/${characterId}/Inventory'),
+    "progression": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}/Character/${characterId}/Progression'),
     "equip": 'http://www.bungie.net/Platform/Destiny/EquipItem',
     "transfer-item": 'http://www.bungie.net/Platform/Destiny/TransferItem'
 };
@@ -49,7 +49,7 @@ function handle(response, full) {
             ? response
             : response.Response;
     }
-    throw response;
+    throw new Error('Failed response from the DestinyApi:\n' + JSON.stringify(response, null, 2));
 }
 
 class DestinyApi {
@@ -77,17 +77,22 @@ class DestinyApi {
      * Performs a get request against an api uri.
      *
      * @param {string} uri - the uri to get from.
+     * @param {object} queryString - an object containing key-value pairs to be placed in the query string.
      * @returns {Promise} a promise for the request result.
      */
-    get(uri) {
-        return request({
+    get(uri, queryString) {
+        let options = {
             uri: uri,
             headers: {
                 'x-api-key': this.apiKey,
             },
             json: true
-        })
-        .then(response => handle(response, this.fullResponse));
+        };
+        if (queryString) {
+            options.qs = queryString;
+        }
+        return request(options)
+            .then(response => handle(response, this.fullResponse));
     }
 
     /**
@@ -124,7 +129,7 @@ class DestinyApi {
     }
 
     /**
-     * Loads recent activities for a character
+     * Loads all activities a character can participate in.
      *
      * @param membershipType - Which console network the account belongs to
      * @param membershipId - The bungie id for the account
@@ -138,18 +143,28 @@ class DestinyApi {
     }
 
     /**
-     * Loads the activity history for a character
+     * Loads the activity history for a character. The request has optional parameters:
+     *
+     * - count: the number of rows to return in the response.
+     * - definitions: whether or not to include activity definitions in the response.
+     * - mode: filters the characters history to return only a subset of activities, possible filters:
+     *         None, Story, Strike, Raid, AllPvP, Patrol, AllPvE, PvPIntroduction, ThreeVsThree, Control,
+     *         Lockdown, Team, FreeForAll, Nightfall, Heroic, AllStrikes, IronBanner, AllArena, Arena,
+     *         ArenaChallenge, TrialsOfOsiris, Elimination, Rift, Mayhem, ZoneControl, Racing, Supremacy,
+     *         PrivateMatchesAll
+     * - page: a results page number to return, starting at 0.
      *
      * @param membershipType - Which console network the account belongs to
      * @param membershipId - The bungie id for the account
      * @param characterId - the id for the character
-     * @param mode - TODO wtf
+     * @param options - an object containing the optional parameters for the request.
      */
-    activityHistory(membershipType, membershipId, characterId, mode) {
-        let parameters = {membershipType: membershipType, membershipId: membershipId, characterId: characterId, mode: mode};
-        validate(parameters, ['membershipType', 'membershipId', 'characterId', 'mode']);
+    activityHistory(membershipType, membershipId, characterId, options) {
+        let parameters = {membershipType: membershipType, membershipId: membershipId, characterId: characterId};
+        validate(parameters, ['membershipType', 'membershipId', 'characterId']);
         let uri = uris['activity-history'](parameters);
-        return this.get(uri);
+        options = _.defaults(options, {mode: 'None'});
+        return this.get(uri, options);
     }
 
     /**
