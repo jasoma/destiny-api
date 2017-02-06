@@ -3,6 +3,9 @@
 const _ = require('lodash');
 const request = require('request-promise');
 
+const ActivityHistory = require('./requests/activity-history');
+
+const host = 'http://www.bungie.net/Platform/Destiny/';
 const uris = {
     "search": _.template('http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/${membershipType}/${name}'),
     "account": _.template('http://www.bungie.net/Platform/Destiny/${membershipType}/Account/${membershipId}/Summary'),
@@ -160,11 +163,14 @@ class DestinyApi {
      * @param options - an object containing the optional parameters for the request.
      */
     activityHistory(membershipType, membershipId, characterId, options) {
-        let parameters = {membershipType: membershipType, membershipId: membershipId, characterId: characterId};
-        validate(parameters, ['membershipType', 'membershipId', 'characterId']);
-        let uri = uris['activity-history'](parameters);
-        options = _.defaults(options, {mode: 'None'});
-        return this.get(uri, options);
+        let parameters = _.merge({
+            membershipType: membershipType,
+            membershipId: membershipId,
+            characterId: characterId
+        }, options)
+        let request = new ActivityHistory(this.apiKey, parameters);
+        return request.execute(host)
+            .then(response => handle(response, this.fullResponse));
     }
 
     /**

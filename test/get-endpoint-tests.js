@@ -105,7 +105,7 @@ describe('get methods', function() {
                 });
         });
 
-        it('should load activity history for a psn account', () => {
+        it.only('should load activity history for a psn account', () => {
             return client.activityHistory(DestinyApi.psn, psn.membershipId, psn.characters[0].characterBase.characterId)
                 .then(response => {
                     assert.ok(response);

@@ -1,0 +1,34 @@
+host: http://www.bungie.net/Platform/Destiny/
+endpoints:
+
+  - activity-history:
+      method: get
+      uriTemplate: Stats/ActivityHistory/${membershipType}/${membershipId}/${characterId}
+      canonicalName: GetActivityHistory
+      jsName: activityHistory
+      bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fActivityHistory%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f
+      description: Loads activity reports for recent activities for a character
+      parameters:
+          - membershipType: Which console network the account belongs to
+          - membershipId: The bungie id for the account
+          - characterId: the id for the character
+          - count:
+              description: the number of rows to return in the response
+              optional: true
+          - page:
+              description: a results page number to return, returns page 0 if not specified
+              optional: true
+          - definitions:
+              description: whether or not to include activity definitions in the response, false if not specified
+              optional: true
+          - mode:
+              description: >
+                filters the characters history to return only a subset of activities, possible filters:
+                  None, Story, Strike, Raid, AllPvP, Patrol, AllPvE, PvPIntroduction, ThreeVsThree, Control,
+                  Lockdown, Team, FreeForAll, Nightfall, Heroic, AllStrikes, IronBanner, AllArena, Arena,
+                  ArenaChallenge, TrialsOfOsiris, Elimination, Rift, Mayhem, ZoneControl, Racing, Supremacy,
+                  PrivateMatchesAll
+                uses None if not specified which returns history for all activities
+              optional: false
+              default: None
+
