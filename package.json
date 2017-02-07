@@ -4,8 +4,6 @@
   "description": "nodejs client for accessing the Destiny API",
   "main": "destiny-api.js",
   "dependencies": {
-    "destiny-client": "^0.6.0",
-    "dustjs-linkedin": "^2.7.5",
     "lodash": "^4.17.4",
     "request": "^2.79.0",
     "request-promise": "^4.1.1"
@@ -23,7 +21,7 @@
     "mocha-parallel-tests": "^1.2.5"
   },
   "scripts": {
-    "generate": "node generate-api.js",
+    "build": "node generate-request-classes.js",
     "test": "./node_modules/.bin/mocha-parallel-tests test"
   },
   "author": "jason@jasonmaher.me",

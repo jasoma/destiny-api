@@ -10,13 +10,16 @@ activity-history:
     characterId: the id for the character
     count:
       description: the number of rows to return in the response
-      optional: true
+      type: query
+      required: false
     page:
       description: a results page number to return, returns page 0 if not specified
-      optional: true
+      type: query
+      required: false
     definitions:
       description: whether or not to include activity definitions in the response, false if not specified
-      optional: true
+      type: query
+      required: false
     mode:
       description: >
         filters the characters history to return only a subset of activities, possible filters:
@@ -25,5 +28,5 @@ activity-history:
           ArenaChallenge, TrialsOfOsiris, Elimination, Rift, Mayhem, ZoneControl, Racing, Supremacy,
           PrivateMatchesAll
         uses None if not specified which returns history for all activities
-      optional: false
+      type: query
       default: None

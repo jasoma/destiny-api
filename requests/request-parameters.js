@@ -57,7 +57,7 @@ class RequestParameters {
             }
         }
         if (missing.length != 0) {
-            return new Error(`Required parameter(s) [${missing.join('. ')}] missing`);
+            return new Error(`Required parameter(s) [${missing.join(', ')}] missing`);
         }
         return null;
     }

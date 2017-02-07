@@ -3,7 +3,7 @@
 const _ = require('lodash');
 const request = require('request-promise');
 
-const ActivityHistory = require('./requests/activity-history');
+const ActivityHistoryRequest = require('./requests/activity-history-request');
 
 const host = 'http://www.bungie.net/Platform/Destiny/';
 const uris = {
@@ -168,7 +168,7 @@ class DestinyApi {
             membershipId: membershipId,
             characterId: characterId
         }, options)
-        let request = new ActivityHistory(this.apiKey, parameters);
+        let request = new ActivityHistoryRequest(this.apiKey, parameters);
         return request.execute(host)
             .then(response => handle(response, this.fullResponse));
     }
