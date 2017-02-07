@@ -5,7 +5,7 @@ const request = require('request-promise');
 const Promise = require('bluebird');
 const RequestParameters = require('./request-parameters');
 
-const uriTemplate = _.template('Stats/ActivityHistory/${membershipType}/${destinyMembershipId}/${characterId}');
+const uriTemplate = _.template('${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/Activities/');
 const parameters = new RequestParameters([{
     "required": true,
     "type": "path",
@@ -21,24 +21,11 @@ const parameters = new RequestParameters([{
 }, {
     "required": false,
     "type": "query",
-    "name": "count"
-}, {
-    "required": false,
-    "type": "query",
-    "name": "page"
-}, {
-    "required": false,
-    "type": "query",
     "name": "definitions"
-}, {
-    "required": true,
-    "type": "query",
-    "name": "mode",
-    "default": "None"
 }]);
 
 
-class ActivityHistoryRequest {
+class ActivitiesRequest {
 
     constructor(apiKey, values) {
         this.apiKey = apiKey;
@@ -70,4 +57,4 @@ class ActivityHistoryRequest {
     }
 }
 
-module.exports = ActivityHistoryRequest;
+module.exports = ActivitiesRequest;

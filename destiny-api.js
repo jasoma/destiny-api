@@ -2,8 +2,7 @@
 
 const _ = require('lodash');
 const request = require('request-promise');
-
-const ActivityHistoryRequest = require('./requests/activity-history-request');
+const requests = require('./requests/requests');
 
 const host = 'http://www.bungie.net/Platform/Destiny/';
 const uris = {
@@ -76,197 +75,32 @@ class DestinyApi {
         return 1;
     }
 
-    /**
-     * Performs a get request against an api uri.
-     *
-     * @param {string} uri - the uri to get from.
-     * @param {object} queryString - an object containing key-value pairs to be placed in the query string.
-     * @returns {Promise} a promise for the request result.
-     */
-    get(uri, queryString) {
-        let options = {
-            uri: uri,
-            headers: {
-                'x-api-key': this.apiKey,
-            },
-            json: true
-        };
-        if (queryString) {
-            options.qs = queryString;
-        }
-        return request(options)
+    accountSummary(parameters) {
+        let request = new requests.AccountSummaryRequest(this.apiKey, parameters);
+        return request
+            .execute(host)
             .then(response => handle(response, this.fullResponse));
     }
 
-    /**
-     * Performs a post request against an api uri.
-     *
-     * @param {string} uri - the uri to post to.
-     * @param {object} body - the object to place in the post body.
-     * @returns {Promise} a promise for the request result.
-     */
-    post(uri, body) {
-        return request({
-            method: 'POST',
-            uri: uri,
-            body: body,
-            headers: {
-                'x-api-key': this.apiKey
-            },
-            json: true
-        })
-        .then(response => handle(response, this.fullResponse));
-    }
-
-    /**
-     * Loads the details of a Destiny account
-     *
-     * @param membershipType - Which console network the account belongs to
-     * @param membershipId - The bungie id for the account
-     */
-    account(membershipType, membershipId) {
-        let parameters = {membershipType: membershipType, membershipId: membershipId};
-        validate(parameters, ['membershipType', 'membershipId']);
-        let uri = uris['account'](parameters);
-        return this.get(uri);
-    }
-
-    /**
-     * Loads all activities a character can participate in.
-     *
-     * @param membershipType - Which console network the account belongs to
-     * @param membershipId - The bungie id for the account
-     * @param characterId - the id for the character
-     */
-    activities(membershipType, membershipId, characterId) {
-        let parameters = {membershipType: membershipType, membershipId: membershipId, characterId: characterId};
-        validate(parameters, ['membershipType', 'membershipId', 'characterId']);
-        let uri = uris['activities'](parameters);
-        return this.get(uri);
-    }
-
-    /**
-     * Loads the activity history for a character. The request has optional parameters:
-     *
-     * - count: the number of rows to return in the response.
-     * - definitions: whether or not to include activity definitions in the response.
-     * - mode: filters the characters history to return only a subset of activities, possible filters:
-     *         None, Story, Strike, Raid, AllPvP, Patrol, AllPvE, PvPIntroduction, ThreeVsThree, Control,
-     *         Lockdown, Team, FreeForAll, Nightfall, Heroic, AllStrikes, IronBanner, AllArena, Arena,
-     *         ArenaChallenge, TrialsOfOsiris, Elimination, Rift, Mayhem, ZoneControl, Racing, Supremacy,
-     *         PrivateMatchesAll
-     * - page: a results page number to return, starting at 0.
-     *
-     * @param membershipType - Which console network the account belongs to
-     * @param membershipId - The bungie id for the account
-     * @param characterId - the id for the character
-     * @param options - an object containing the optional parameters for the request.
-     */
-    activityHistory(membershipType, membershipId, characterId, options) {
-        let parameters = _.merge({
-            membershipType: membershipType,
-            membershipId: membershipId,
-            characterId: characterId
-        }, options)
-        let request = new ActivityHistoryRequest(this.apiKey, parameters);
-        return request.execute(host)
+    activities(parameters) {
+        let request = new requests.ActivitiesRequest(this.apiKey, parameters);
+        return request
+            .execute(host)
             .then(response => handle(response, this.fullResponse));
     }
 
-    /**
-     * Loads the post-game carnage report for a particular activity
-     *
-     * @param activityId - The id of the activity to get the carnage report for
-     */
-    carnageReport(activityId) {
-        let parameters = {activityId: activityId};
-        validate(parameters, ['activityId']);
-        let uri = uris['carnage-report'](parameters);
-        return this.get(uri);
+    activityHistory(parameters) {
+        let request = new requests.ActivityHistoryRequest(this.apiKey, parameters);
+        return request
+            .execute(host)
+            .then(response => handle(response, this.fullResponse));
     }
 
-    /**
-     * Loads the details of a single character
-     *
-     * @param membershipType - Which console network the account belongs to
-     * @param membershipId - The bungie id for the account
-     * @param characterId - the id for the character
-     */
-    character(membershipType, membershipId, characterId) {
-        let parameters = {membershipType: membershipType, membershipId: membershipId, characterId: characterId};
-        validate(parameters, ['membershipType', 'membershipId', 'characterId']);
-        let uri = uris['character'](parameters);
-        return this.get(uri);
-    }
-
-    /**
-     * Equip an item to a characters
-     *
-     * @param membershipType - Which console network the account belongs to
-     * @param characterId - the id for the character in the account
-     * @param itemId - the id of the item to equip
-     */
-    equip(membershipType, characterId, itemId) {
-        let parameters = {membershipType: membershipType, characterId: characterId, itemId: itemId};
-        validate(parameters, ['membershipType', 'characterId', 'itemId']);
-        let uri = uris['equip'];
-        return this.post(uri, parameters);
-    }
-
-    /**
-     * Loads the item inventory for a character
-     *
-     * @param membershipType - Which console network the account belongs to
-     * @param membershipId - The bungie id for the account
-     * @param characterId - the id for the character
-     */
-    inventory(membershipType, membershipId, characterId) {
-        let parameters = {membershipType: membershipType, membershipId: membershipId, characterId: characterId};
-        validate(parameters, ['membershipType', 'membershipId', 'characterId']);
-        let uri = uris['inventory'](parameters);
-        return this.get(uri);
-    }
-
-    /**
-     * Loads the progression details for a character
-     *
-     * @param membershipType - Which console network the account belongs to
-     * @param membershipId - The bungie id for the account
-     * @param characterId - the id for the character
-     */
-    progression(membershipType, membershipId, characterId) {
-        let parameters = {membershipType: membershipType, membershipId: membershipId, characterId: characterId};
-        validate(parameters, ['membershipType', 'membershipId', 'characterId']);
-        let uri = uris['progression'](parameters);
-        return this.get(uri);
-    }
-
-    /**
-     * Searches for player accounts based on the username of the account
-     *
-     * @param membershipType - Which console network the account belongs to
-     * @param name - The name of the account
-     */
-    search(membershipType, name) {
-        let parameters = {membershipType: membershipType, name: name};
-        validate(parameters, ['membershipType', 'name']);
-        let uri = uris['search'](parameters);
-        return this.get(uri);
-    }
-
-    /**
-     *
-     *
-     * @param membershipType - Which console network the account belongs to
-     * @param characterId - the id for the character in the account
-     * @param itemId - the id of the item to transfer
-     * @param itemReferenceHash - the reference hash of the item to transfer
-     */
-    transferItem(membershipType, characterId, itemId, itemReferenceHash) {
-        let parameters = {membershipType: membershipType, characterId: characterId, itemId: itemId, itemReferenceHash: itemReferenceHash};
-        validate(parameters, ['membershipType', 'characterId', 'itemId', 'itemReferenceHash']);
-        let uri = uris['transfer-item'];
-        return this.post(uri, parameters);
+    search(parameters) {
+        let request = new requests.SearchRequest(this.apiKey, parameters);
+        return request
+            .execute(host)
+            .then(response => handle(response, this.fullResponse));
     }
 
 }
