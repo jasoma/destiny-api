@@ -82,15 +82,15 @@ class DestinyApi {
             .then(response => handle(response, this.fullResponse));
     }
 
-    activities(parameters) {
-        let request = new requests.ActivitiesRequest(this.apiKey, parameters);
+    activityHistory(parameters) {
+        let request = new requests.ActivityHistoryRequest(this.apiKey, parameters);
         return request
             .execute(host)
             .then(response => handle(response, this.fullResponse));
     }
 
-    activityHistory(parameters) {
-        let request = new requests.ActivityHistoryRequest(this.apiKey, parameters);
+    activities(parameters) {
+        let request = new requests.ActivitiesRequest(this.apiKey, parameters);
         return request
             .execute(host)
             .then(response => handle(response, this.fullResponse));

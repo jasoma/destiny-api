@@ -1,3 +1,17 @@
+account-summary:
+  canonicalName: GetAccountSummary
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fSummary%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Summary
+  description: Returns Destiny account information for the supplied membership in a compact summary form.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
 activity-history:
   canonicalName: GetActivityHistory
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fActivityHistory%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f
@@ -31,30 +45,6 @@ activity-history:
       type: query
       default: None
 
-search:
-  canonicalName: SearchDestinyPlayer
-  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=SearchDestinyPlayer%2f%7bmembershipType%7d%2f%7bdisplayName%7d%2f
-  httpMethod: get
-  uriTemplate: SearchDestinyPlayer/${membershipType}/${displayName}
-  description: Returns a list of Destiny memberships given a full Gamertag or PSN ID.
-  parameters:
-    membershipType: The full gamertag or PSN id of the player. Spaces and case are ignored.
-    displayName: A valid non-BungieNet membership type, or All.
-
-account-summary:
-  canonicalName: GetAccountSummary
-  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fSummary%2f
-  httpMethod: get
-  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Summary
-  description: Returns Destiny account information for the supplied membership in a compact summary form.
-  parameters:
-    membershipType: A valid non-BungieNet membership type.
-    destinyMembershipId: Destiny membership ID.
-    definitions:
-      description: If False, will not return definition information.
-      type: query
-      required: false
-
 activities:
   canonicalName: GetCharacterActivities
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fActivities%2f
@@ -69,4 +59,16 @@ activities:
       description: If False, will not return definition information.
       type: query
       required: false
+
+search:
+  canonicalName: SearchDestinyPlayer
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=SearchDestinyPlayer%2f%7bmembershipType%7d%2f%7bdisplayName%7d%2f
+  httpMethod: get
+  uriTemplate: SearchDestinyPlayer/${membershipType}/${displayName}
+  description: Returns a list of Destiny memberships given a full Gamertag or PSN ID.
+  parameters:
+    membershipType: The full gamertag or PSN id of the player. Spaces and case are ignored.
+    displayName: A valid non-BungieNet membership type, or All.
+
+
 
