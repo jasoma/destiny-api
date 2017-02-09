@@ -6,7 +6,7 @@ const DestinyApi = require('../destiny-api');
 
 let users = require('./data/users');
 let chance = require('chance').Chance();
-let client = new DestinyApi('f874edae1d7f44099712691966e43523');
+let client = new DestinyApi(process.env.API_KEY);
 
 describe('DestinyApi.accountSummary', () => {
 
