@@ -1,6 +1,5 @@
 # project specific
 generated-src
-docs
 .envrc
 
 # Created by https://www.gitignore.io/api/node
