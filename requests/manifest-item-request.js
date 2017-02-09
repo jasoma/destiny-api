@@ -5,15 +5,19 @@ const request = require('request-promise');
 const Promise = require('bluebird');
 const RequestParameters = require('./request-parameters');
 
-const uriTemplate = _.template('${membershipType}/Account/${destinyMembershipId}/Advisors/');
+const uriTemplate = _.template('Manifest/${type}/${id}/');
 const parameters = new RequestParameters([{
     "required": true,
     "type": "path",
-    "name": "membershipType"
+    "name": "type"
 }, {
     "required": true,
     "type": "path",
-    "name": "destinyMembershipId"
+    "name": "id"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "version"
 }, {
     "required": false,
     "type": "query",
@@ -21,7 +25,7 @@ const parameters = new RequestParameters([{
 }]);
 
 
-class AccountAdvisorsRequest {
+class ManifestItemRequest {
 
     constructor(apiKey, values) {
         this.apiKey = apiKey;
@@ -53,4 +57,4 @@ class AccountAdvisorsRequest {
     }
 }
 
-module.exports = AccountAdvisorsRequest;
+module.exports = ManifestItemRequest;

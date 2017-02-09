@@ -5,7 +5,7 @@ const request = require('request-promise');
 const Promise = require('bluebird');
 const RequestParameters = require('./request-parameters');
 
-const uriTemplate = _.template('${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/Activities/');
+const uriTemplate = _.template('${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/Inventory/${itemInstanceId}/');
 const parameters = new RequestParameters([{
     "required": true,
     "type": "path",
@@ -19,13 +19,17 @@ const parameters = new RequestParameters([{
     "type": "path",
     "name": "characterId"
 }, {
+    "required": true,
+    "type": "path",
+    "name": "itemInstanceId"
+}, {
     "required": false,
     "type": "query",
     "name": "definitions"
 }]);
 
 
-class ActivitiesRequest {
+class ItemDetailRequest {
 
     constructor(apiKey, values) {
         this.apiKey = apiKey;
@@ -57,4 +61,4 @@ class ActivitiesRequest {
     }
 }
 
-module.exports = ActivitiesRequest;
+module.exports = ItemDetailRequest;

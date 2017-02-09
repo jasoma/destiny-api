@@ -5,23 +5,51 @@ const request = require('request-promise');
 const Promise = require('bluebird');
 const RequestParameters = require('./request-parameters');
 
-const uriTemplate = _.template('${membershipType}/Account/${destinyMembershipId}/Advisors/');
+const uriTemplate = _.template('Explorer/TalentNodeSteps/');
 const parameters = new RequestParameters([{
-    "required": true,
-    "type": "path",
-    "name": "membershipType"
-}, {
-    "required": true,
-    "type": "path",
-    "name": "destinyMembershipId"
-}, {
     "required": false,
     "type": "query",
     "name": "definitions"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "page"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "direction"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "name"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "count"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "impactEffects"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "weaponPerformance"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "guardianAttributes"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "lightAbilities"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "damageTypes"
 }]);
 
 
-class AccountAdvisorsRequest {
+class ExploreTalentNodesRequest {
 
     constructor(apiKey, values) {
         this.apiKey = apiKey;
@@ -53,4 +81,4 @@ class AccountAdvisorsRequest {
     }
 }
 
-module.exports = AccountAdvisorsRequest;
+module.exports = ExploreTalentNodesRequest;

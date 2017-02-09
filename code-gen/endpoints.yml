@@ -49,7 +49,7 @@ account-advisors:
   canonicalName: GetAdvisorsForAccount
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fAdvisors%2f
   httpMethod: get
-  uriTemplate: /${membershipType}/Account/${destinyMembershipId}/Advisors/
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Advisors/
   description: Returns the set of Advisor data for the given account. This endpoint only returns advisors that are relevant on an account level, and will likely grow over time.
   parameters:
     membershipType: A valid non-BungieNet membership type.
@@ -59,7 +59,66 @@ account-advisors:
       type: query
       required: false
 
-activities:
+character-advisors:
+  canonicalName: GetAdvisorsForCharacterV2
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fAdvisors%2fV2%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/Advisors/V2/
+  description: Returns the set of Advisor data for the given account and character.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    characterId: The Character ID for which we want the Advisor.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+account-items:
+  canonicalName: GetAccountItemsSummary
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fItems%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Items/
+  description: Returns information about all items on the for the supplied Destiny Membership ID, and a minimal set of character information so that it can be used.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+bond-advisors:
+  canonicalName: GetBondAdvisors
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fAdvisors%2fBonds%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/MyAccount/Advisors/Bonds/
+  description: Returns the set of Advisor data specific to Bonds between the given Account. The currently logged-in user must own this character with a Destiny account of the given Membership Type.
+  signIn: true
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+character:
+  canonicalName: GetCharacter
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fComplete%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/Complete/
+  description: Returns all character information for the supplied character.
+  signIn: true
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    characterId: ID of the character.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+character-activities:
   canonicalName: GetCharacterActivities
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fActivities%2f
   httpMethod: get
@@ -74,6 +133,525 @@ activities:
       type: query
       required: false
 
+character-inventory:
+  canonicalName: GetCharacterInventorySummary
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fInventory%2fSummary%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/Inventory/Summary/
+  description: Returns summary information for the inventory for the supplied character.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    characterId: ID of the character.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+character-progression:
+  canonicalName: GetCharacterProgression
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fProgression%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/Progression/
+  description: Provides the progression details for the supplied character.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    characterId: ID of the character.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+character-summary:
+  canonicalName: GetCharacterSummary
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/
+  description: Returns a character summary for the supplied membership.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    characterId: ID of the character.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+aggregate-stats:
+  canonicalName: GetDestinyAggregateActivityStats
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fAggregateActivityStats%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/{destinyMembershipId}/${characterId}/
+  description: Gets all activities the character has participated in together with aggregate statistics for those activities.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    characterId: The specific character whose activities should be returned.
+    definitions:
+      description: Client would like activity definition returned in response.
+      type: query
+      required: false
+
+explore-items:
+  canonicalName: GetDestinyExplorerItems
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Explorer%2fItems%2f
+  httpMethod: get
+  uriTemplate: Explorer/Items/
+  description: Gets a page list of Destiny items.
+  parameters:
+    definitions:
+      description: Indicates the item definitions should be returned with item hash results.
+      type: query
+      required: false
+    sourcecat:
+      description: Items must drop from the specified source category, omit for all items. Use Vendor or Activity.
+      type: query
+      required: false
+    categories:
+      description: Category identifiers. Only items that are in all of the passed-in categories will be returned.
+      type: query
+      required: false
+    weaponPerformance:
+      description: Items must have node steps in one of these categories, omit for all items. RateOfFire, Damage, Accuracy, Range, Zoom, Recoil, Ready, Reload, HairTrigger, AmmoAndMagazine, TrackingAndDetonation, ShotgunSpread, ChargeTime
+      type: query
+      required: false
+    rarity:
+      description: 'Rarity of items to return: Currency, Basic, Common, Rare, Superior, Exotic. Omit for all items.'
+      type: query
+      required: false
+    sourceHash:
+      description: Items must drop from the specified source, omit for all items. Overrides sourcecat.
+      type: query
+      required: false
+    damageTypes:
+      description: Items must have node steps in one of these categories, omit for all items. Kinetic, Arc, Solar, Void
+      type: query
+      required: false
+    impactEffects:
+      description: Items must have node steps in one of these categories, omit for all items. ArmorPiercing, Ricochet, Flinch, CollateralDamage, Disorient, HighlightTarget
+      type: query
+      required: false
+    guardianAttributes:
+      description: Items must have node steps in one of these categories, omit for all items. Stats, Shields, Health, Revive, AimUnderFire, Radar, Invisibility, Reputations
+      type: query
+      required: false
+    lightAbilities:
+      description: Items must have node steps in one of these categories, omit for all items. Grenades, Melee, MovementModes, Orbs, SuperEnergy, SuperMods
+      type: query
+      required: false
+    matchrandomsteps:
+      description: True if the supplied groups/step hash filters should match random node steps. False indicates the item can always get the step before it is considered a match.
+      type: query
+      required: false
+    step:
+      description: Hash ID of the talent node step that an item must have in order to be returned.
+      type: query
+      required: false
+    count:
+      description: Number of rows to return. Use 10, 25, 50, 100, or 500.
+      type: query
+      required: false
+    page:
+      description: Page number to return, starting with 0.
+      type: query
+      required: false
+    name:
+      description: Name of items to return (partial match, no case). Omit for all items.
+      type: query
+      required: false
+    order:
+      description: Item property used for sorting. Use Name, ItemType, Rarity, ItemTypeName, ItemStatHash, MinimumRequiredLevel, MaximumRequiredLevel.
+      type: query
+      required: false
+    orderstathash:
+      description: This value is used when the order parameter is set to ItemStatHash. The item stat for the provided hash value will be used in the sort.
+      type: query
+      required: false
+    direction:
+      description: 'Order to sort items: Ascending or Descending'
+      type: query
+      required: false
+
+explore-talent-nodes:
+  canonicalName: GetDestinyExplorerTalentNodeSteps
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Explorer%2fTalentNodeSteps%2f
+  httpMethod: get
+  uriTemplate: Explorer/TalentNodeSteps/
+  description: Gets a page list of Destiny talent node steps, ordered by the step name.
+  parameters:
+    definitions:
+      description: Indicates the step definitions should be returned with item hash results.
+      type: query
+      required: false
+    page:
+      description: Page number to return, starting with 0.
+      type: query
+      required: false
+    direction:
+      description: 'Order to sort steps (by name): Ascending or Descending'
+      type: query
+      required: false
+    name:
+      description: Name of items to return (partial match, no case). Omit for all items.
+      type: query
+      required: false
+    count:
+      description: Number of rows to return. Use 10, 25, 50, 100, 500
+      type: query
+      required: false
+    impactEffects:
+      description: Node steps in one of these categories, omit for all steps. ArmorPiercing, Ricochet, Flinch, CollateralDamage, Disorient, HighlightTarget
+      type: query
+      required: false
+    weaponPerformance:
+      description: Node steps in one of these categories, omit for all steps. RateOfFire, Damage, Accuracy, Range, Zoom, Recoil, Ready, Reload, HairTrigger, AmmoAndMagazine, TrackingAndDetonation, ShotgunSpread, ChargeTime
+      type: query
+      required: false
+    guardianAttributes:
+      description: Node steps in one of these categories, omit for all steps. Stats, Shields, Health, Revive, AimUnderFire, Radar, Invisibility, Reputations
+      type: query
+      required: false
+    lightAbilities:
+      description: Node steps in one of these categories, omit for all steps. Grenades, Melee, MovementModes, Orbs, SuperEnergy, SuperMods
+      type: query
+      required: false
+    damageTypes:
+      description: Node steps in one of these categories, omit for all steps. Kinetic, Arc, Solar, Void
+      type: query
+      required: false
+
+manifest:
+  canonicalName: GetDestinyManifest
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Manifest%2f
+  httpMethod: get
+  uriTemplate: Manifest/
+  description: Returns the current version of the manifest as a json object.
+
+manifest-item:
+  canonicalName: GetDestinySingleDefinition
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Manifest%2f%7btype%7d%2f%7bid%7d%2f
+  httpMethod: get
+  uriTemplate: Manifest/${type}/${id}/
+  description: Returns the specific item from the current manifest a json object.
+  parameters:
+    type: The type of definition to return.
+    id: The hash ID of the definition instance.
+    version:
+      description: The version of content to be returned, if that version exists. No, you can't look into the future by changing this, it doesn't exist. Nice try though.
+      type: query
+      required: false
+    definitions:
+      description: If true, related definitions will be returned.
+      type: query
+      required: false
+
+account-grimoire:
+  canonicalName: GetGrimoireByMembership
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Vanguard%2fGrimoire%2f%7bmembershipType%7d%2f%7bmembershipId%7d%2f
+  httpMethod: get
+  uriTemplate: Vanguard/Grimoire/${membershipType}/${membershipId}/
+  description: Gets someone else's Grimoire.
+  parameters:
+    membershipType: A valid membership type.
+    membershipId: The membershipId of the user to retrieve.
+    definitions:
+      description: Indicates the card definition should be returned when player data
+      type: query
+      required: false
+    flavour:
+      description: Indicates flavour stats should be included with player card data.
+      type: query
+      required: false
+    single:
+      description: Indicates data for a single card should be returned.
+      type: query
+      required: false
+
+grimoire:
+  canonicalName: GetGrimoireDefinition
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Vanguard%2fGrimoire%2fDefinition%2f
+  httpMethod: get
+  uriTemplate: Vanguard/Grimoire/Definition/
+  description:
+
+character-stats:
+  canonicalName: GetHistoricalStats
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f
+  httpMethod: get
+  uriTemplate: Stats/${membershipType}/${destinyMembershipId}/${characterId}/
+  description: Gets historical stats for indicated character.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: The Destiny membershipId of the user to retrieve.
+    characterId:
+      description: The id of the character to retrieve. You can omit this character ID or set it to 0 to get aggregate stats across all characters.
+      type: path
+      default: 0
+    monthstart:
+      description: First month to return when monthly stats are requested. Use the format YYYY-MM.
+      type: query
+      required: false
+    monthend:
+      description: Last month to return when monthly stats are requested. Use the format YYYY-MM.
+      type: query
+      required: false
+    daystart:
+      description: First day to return when daily stats are requested. Use the format YYYY-MM-DD
+      type: query
+      required: false
+    dayend:
+      description: Last day to return when daily stats are requested. Use the format YYYY-MM-DD.
+      type: query
+      required: false
+    periodType:
+      description: 'Indicates a specific period type to return. Optional. May be: Daily, Monthly, AllTime, or Activity'
+      type: query
+      required: false
+    modes:
+      description: 'Game modes to return. Values: None, Story, Strike, Raid, AllPvP, Patrol, AllPvE, PvPIntroduction, ThreeVsThree, Control, Lockdown, Team, FreeForAll, Nightfall, Heroic, AllStrikes, IronBanner, AllArena, Arena, ArenaChallenge, TrialsOfOsiris, Elimination, Rift, Mayhem, ZoneControl, Racing, Supremacy, PrivateMatchesAll'
+      type: query
+      required: false
+    groups:
+      description: 'Group of stats to include, otherwise only general stats are returned. Comma separated list is allowed. Values: General, Weapons, Medals, Enemies'
+      type: query
+      required: false
+
+stats-definitions:
+  canonicalName: GetHistoricalStatsDefinition
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fDefinition%2f
+  httpMethod: get
+  uriTemplate: Stats/Definition/
+  description: Gets historical stats definitions.
+
+account-stats:
+  canonicalName: GetHistoricalStatsForAccount
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fAccount%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f
+  httpMethod: get
+  uriTemplate: Stats/Account/{membershipType}/{destinyMembershipId}/
+  description: Gets aggregate historical stats organized around each character for a given account.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    groups:
+      description: 'Groups of stats to include, otherwise only general stats are returned. Comma separated list is allowed. Values: General, Weapons, Medals, Enemies.'
+      type: query
+      required: false
+
+item-detail:
+  canonicalName: GetItemDetail
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fInventory%2f%7bitemInstanceId%7d%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/Inventory/${itemInstanceId}/
+  description: Retrieve the details of a Destiny Item.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    characterId: The specific character whose activities should be returned.
+    itemInstanceId: The Instance ID of the destiny item. Not the Reference ID, pay attention.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+item-reference-detail:
+  canonicalName: GetItemReferenceDetail
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fItemReference%2f%7bitemHash%7d%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Character/${characterId}/ItemReference/${itemHash}/
+  description: Retrieve the details of a conceptual Destiny Item that may be relevant to a character, but without referring to a specific instance of that item. There are some rare cases where noninstanced items may have character-relevant metadata, in which case you need to call this service. (ugh, I know. It annoys me too.)
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    characterId: The specific character whose activities should be returned.
+    itemHash: The *hash* (i.e. item reference ID) of the item, and *not* a specific instance ID.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+search-membership:
+  canonicalName: GetMembershipIdByDisplayName
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fStats%2fGetMembershipIdByDisplayName%2f%7bdisplayName%7d%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Stats/GetMembershipIdByDisplayName/${displayName}/
+  description: Returns the numerical id of a player based on their display name, zero if not found.
+  parameters:
+    displayName: A display name meeting the parameters of display names for the specified membership type (i.e., a gamertag, or a PSN Id)
+    membershipType: A valid non-BungieNet membership type, or All.
+    ignorecase:
+      description: Default is false when not specified. True to cause a caseless search to be used.
+      type: query
+      required: false
+
+carnage-report:
+  canonicalName: GetPostGameCarnageReport
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fPostGameCarnageReport%2f%7bactivityId%7d%2f
+  httpMethod: get
+  uriTemplate: Stats/PostGameCarnageReport/${activityId}/
+  description: Gets the available post game carnage report for the activity ID.
+  parameters:
+    activityId: The ID of the activity whose PGCR is requested.
+    definitions:
+      description: Client would like activity and weapon definitions returned in response.
+      type: query
+      required: false
+
+public-advisors:
+  canonicalName: GetPublicAdvisorsV2
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Advisors%2fV2%2f
+  httpMethod: get
+  uriTemplate: Advisors/V2/
+  description: Returns public Advisor data - data that is common for all characters and accounts, and thus does not require login in order to access.
+  parameters:
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+record-book-status:
+  canonicalName: GetRecordBookCompletionStatus
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fRecordBooks%2f%7brecordBookHash%7d%2fCompletion%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/MyAccount/RecordBooks/${recordBookHash}/Completion/
+  description: Provides Record Book completion status for your Destiny account. Returned as a separate endpoint because it could have potentially sensitive information.
+  signIn: true
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    recordBookHash: The Hash Identifier of a Record Book for which to get completion status.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+triumphs:
+  canonicalName: GetTriumphs
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fTriumphs%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/Account/${destinyMembershipId}/Triumphs/
+  description: Provides Triumphs for a given Destiny account.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+weapon-history:
+  canonicalName: GetUniqueWeaponHistory
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fUniqueWeapons%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f
+  httpMethod: get
+  uriTemplate: Stats/UniqueWeapons/${membershipType}/${destinyMembershipId}/${characterId}/
+  description: Gets details about unique weapon usage, including all exotic weapons.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    characterId: The id of the character to retrieve.
+    definitions:
+      description: True if item definitions should be returned in response.
+      type: query
+      required: false
+
+vault-summary:
+  canonicalName: GetVaultSummary
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fVault%2fSummary%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/MyAccount/Vault/Summary/
+  description: Returns summary information for the vault for the account of the given Membership Type. You must have an account linked for this membership type for it to work.
+  signIn: true
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    accountId:
+      description: Destiny membership ID of another user if you want to try to peek at their vault. You may be denied.
+      type: query
+      required: false
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+vendors:
+  canonicalName: GetVendorForCurrentCharacter
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendor%2f%7bvendorHash%7d%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/MyAccount/Character/${characterId}/Vendor/${vendorHash}/
+  description: Returns vendor data for the given character and vendor hash. The currently logged-in user must own this character with a Destiny account of the given Membership Type.
+  signIn: true
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    characterId: The Destiny Character ID of the character for whom we're getting vendor info.
+    vendorHash: The Hash Identifier of the Vendor for whom you're getting info.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+vendors-metadata:
+  canonicalName: GetVendorForCurrentCharacterWithMetadata
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendor%2f%7bvendorHash%7d%2fMetadata%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/MyAccount/Character/${characterId}/Vendor/${vendorHash}/Metadata/
+  description: Returns vendor data for the given character and vendor hash, along with any secondary metadata for the vendor and their items. The currently logged-in user must own this character with a Destiny account of the given Membership Type.
+  signIn: true
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    characterId: The Destiny Character ID of the character for whom we're getting vendor info.
+    vendorHash: The Hash Identifier of the Vendor for whom you're getting info.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+vendor-item:
+  canonicalName: GetVendorItemDetailForCurrentCharacter
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendor%2f%7bvendorHash%7d%2fItem%2f%7bvendorItemIndex%7d%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/MyAccount/Character/${characterId}/Vendor/${vendorHash}/Item/${vendorItemIndex}/
+  description:
+  signIn: true
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    characterId: The Destiny Character ID of the character for whom we're getting vendor info.
+    vendorHash: The Hash Identifier of the Vendor for whom you're getting info.
+    vendorItemIndex: 'The Vendor Item Index of the Vendor item for whom you seek additional details. Caveat emptor: you should not be using archived Vendor data to seed this value, as vendor item indexes may change between content versions.'
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+vendor-item-metadata:
+  canonicalName: GetVendorItemDetailForCurrentCharacterWithMetadata
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendor%2f%7bvendorHash%7d%2fItem%2f%7bvendorItemIndex%7d%2fMetadata%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/MyAccount/Character/${characterId}/Vendor/${vendorHash}/Item/${vendorItemIndex}/Metadata/
+  description: Returns vendor data for the given character and vendor hash. The currently logged-in user must own this character with a Destiny account of the given Membership Type. Includes various bits of interesting metadata that might not be useful for some.
+  signIn: true
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    characterId: The Destiny Character ID of the character for whom we're getting vendor info.
+    vendorHash: The Hash Identifier of the Vendor for whom you're getting info.
+    vendorItemIndex: 'The Vendor Item Index of the Vendor item for whom you seek additional details. Caveat emptor: you should not be using archived Vendor data to seed this value, as vendor item indexes may change between content versions.'
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
+vendor-summary:
+  canonicalName: GetVendorSummariesForCurrentCharacter
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendors%2fSummaries%2f
+  httpMethod: get
+  uriTemplate: ${membershipType}/MyAccount/Character/${characterId}/Vendors/Summaries/
+  description: Returns the set of vendor data for the given character. The currently logged-in user must own this character with a Destiny account of the given Membership Type.
+  signIn: true
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    characterId: The Destiny Character ID of the character for whom we're getting vendor info.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
 search:
   canonicalName: SearchDestinyPlayer
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=SearchDestinyPlayer%2f%7bmembershipType%7d%2f%7bdisplayName%7d%2f
@@ -81,8 +659,5 @@ search:
   uriTemplate: SearchDestinyPlayer/${membershipType}/${displayName}
   description: Returns a list of Destiny memberships given a full Gamertag or PSN ID.
   parameters:
-    membershipType: The full gamertag or PSN id of the player. Spaces and case are ignored.
-    displayName: A valid non-BungieNet membership type, or All.
-
-
-
+    displayName: The full gamertag or PSN id of the player. Spaces and case are ignored.
+    membershipType: A valid non-BungieNet membership type, or All.

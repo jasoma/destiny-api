@@ -5,7 +5,7 @@ const request = require('request-promise');
 const Promise = require('bluebird');
 const RequestParameters = require('./request-parameters');
 
-const uriTemplate = _.template('${membershipType}/Account/${destinyMembershipId}/Advisors/');
+const uriTemplate = _.template('${membershipType}/MyAccount/Character/${characterId}/Vendor/${vendorHash}/Item/${vendorItemIndex}/Metadata/');
 const parameters = new RequestParameters([{
     "required": true,
     "type": "path",
@@ -13,7 +13,15 @@ const parameters = new RequestParameters([{
 }, {
     "required": true,
     "type": "path",
-    "name": "destinyMembershipId"
+    "name": "characterId"
+}, {
+    "required": true,
+    "type": "path",
+    "name": "vendorHash"
+}, {
+    "required": true,
+    "type": "path",
+    "name": "vendorItemIndex"
 }, {
     "required": false,
     "type": "query",
@@ -21,7 +29,7 @@ const parameters = new RequestParameters([{
 }]);
 
 
-class AccountAdvisorsRequest {
+class VendorItemMetadataRequest {
 
     constructor(apiKey, values) {
         this.apiKey = apiKey;
@@ -53,4 +61,4 @@ class AccountAdvisorsRequest {
     }
 }
 
-module.exports = AccountAdvisorsRequest;
+module.exports = VendorItemMetadataRequest;

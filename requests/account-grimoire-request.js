@@ -5,7 +5,7 @@ const request = require('request-promise');
 const Promise = require('bluebird');
 const RequestParameters = require('./request-parameters');
 
-const uriTemplate = _.template('${membershipType}/Account/${destinyMembershipId}/Advisors/');
+const uriTemplate = _.template('Vanguard/Grimoire/${membershipType}/${membershipId}/');
 const parameters = new RequestParameters([{
     "required": true,
     "type": "path",
@@ -13,15 +13,23 @@ const parameters = new RequestParameters([{
 }, {
     "required": true,
     "type": "path",
-    "name": "destinyMembershipId"
+    "name": "membershipId"
 }, {
     "required": false,
     "type": "query",
     "name": "definitions"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "flavour"
+}, {
+    "required": false,
+    "type": "query",
+    "name": "single"
 }]);
 
 
-class AccountAdvisorsRequest {
+class AccountGrimoireRequest {
 
     constructor(apiKey, values) {
         this.apiKey = apiKey;
@@ -53,4 +61,4 @@ class AccountAdvisorsRequest {
     }
 }
 
-module.exports = AccountAdvisorsRequest;
+module.exports = AccountGrimoireRequest;

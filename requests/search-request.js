@@ -9,11 +9,11 @@ const uriTemplate = _.template('SearchDestinyPlayer/${membershipType}/${displayN
 const parameters = new RequestParameters([{
     "required": true,
     "type": "path",
-    "name": "membershipType"
+    "name": "displayName"
 }, {
     "required": true,
     "type": "path",
-    "name": "displayName"
+    "name": "membershipType"
 }]);
 
 

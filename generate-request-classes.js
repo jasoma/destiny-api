@@ -63,6 +63,10 @@ function generateClasses() {
     }
 }
 
+/**
+ * Generates the `requests.js` file that exports all the generated requests classes
+ * as a single module.
+ */
 function generateRequestsModule() {
     let requests = [];
     for (let definition of config) {
@@ -83,3 +87,8 @@ function generateRequestsModule() {
 
 generateClasses();
 generateRequestsModule();
+
+let classCount = glob.sync('requests/*-request.js').length;
+console.log(`From ${config.length} endpoint definitions`);
+console.log(`Generated ${classCount} classes`);
+
