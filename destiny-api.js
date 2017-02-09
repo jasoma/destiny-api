@@ -6,6 +6,8 @@ const requests = require('./requests/requests');
 
 const bungieApiHost = 'http://www.bungie.net/Platform/Destiny/';
 
+const _fullResponse = Symbol('fullResponse');
+
 /**
  * Client for the Destiny API, all methods return promises for the request result.
  * Note that the Destiny API will return successful (i.e. status code 200) responses
@@ -34,7 +36,11 @@ class DestinyApi {
      * Whether or not the client should strip api metadata, such as throttling information, from successful responses.
      */
     set fullResponse(val) {
-        this.fullResponse = val;
+        this[_fullResponse] = val;
+    }
+
+    get fullResponse() {
+        return this[_fullResponse];
     }
 
     /**
