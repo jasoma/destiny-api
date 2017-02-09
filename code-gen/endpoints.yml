@@ -45,6 +45,20 @@ activity-history:
       type: query
       default: None
 
+account-advisors:
+  canonicalName: GetAdvisorsForAccount
+  bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fAdvisors%2f
+  httpMethod: get
+  uriTemplate: /${membershipType}/Account/${destinyMembershipId}/Advisors/
+  description: Returns the set of Advisor data for the given account. This endpoint only returns advisors that are relevant on an account level, and will likely grow over time.
+  parameters:
+    membershipType: A valid non-BungieNet membership type.
+    destinyMembershipId: Destiny membership ID.
+    definitions:
+      description: If False, will not return definition information.
+      type: query
+      required: false
+
 activities:
   canonicalName: GetCharacterActivities
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fActivities%2f

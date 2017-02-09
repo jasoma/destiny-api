@@ -6,6 +6,7 @@
 
 const _ = require('lodash');
 const fs = require('fs');
+const glob = require('glob');
 const Template = require('./code-gen/template')
 const endpoints = require('./code-gen/endpoints');
 
@@ -62,4 +63,23 @@ function generateClasses() {
     }
 }
 
+function generateRequestsModule() {
+    let requests = [];
+    for (let definition of config) {
+        let fileName = './' + definition.name + '-request';
+        let key = className(definition);
+        requests.push(`    ${key}: require('fileName')`);
+    }
+
+    let exportBlock =
+          'module.exports = {\n'
+        + requests.join(',\n')
+        + '\n};'
+
+    let template = new Template('code-gen/request-module.template.js');
+    let module = template.render({requestClasses: exportBlock});
+    fs.writeFileSync('requests/requests.js', module, 'utf-8');
+}
+
 generateClasses();
+generateRequestsModule();
