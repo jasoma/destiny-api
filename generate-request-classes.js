@@ -10,6 +10,7 @@ const glob = require('glob');
 const Template = require('./code-gen/template')
 const endpoints = require('./code-gen/endpoints');
 
+let parameterCommentTemplate = require('./code-gen/parameter-comment-template');
 let parameterTemplate = new Template('code-gen/request-parameters.template.js');
 let classTemplate = new Template('code-gen/request-class.template.js');
 let config = endpoints('code-gen/endpoints.yml');
@@ -100,14 +101,28 @@ function generateMethodStubs() {
     let template = new Template('code-gen/api-method.template.js');
     let stubs = [];
     for (let definition of config) {
+
         let jsMethod = methodName(definition);
         let requestClass = className(definition);
+
+        let parameterDocs = [];
+        for (let parameter of definition.parameters) {
+            parameterDocs.push(parameterCommentTemplate(parameter));
+        }
+        let parameterBlock = (parameterDocs.length > 0)
+            ? '\n' + parameterDocs.join('\n')
+            : '';
+
         stubs.push(template.render({
             methodName: jsMethod,
             requestClass: requestClass,
-            description: definition.description
+            description: definition.description,
+            bungieDocs: definition.bungieDocs,
+            canonicalName: definition.canonicalName,
+            parameterDefinitions: parameterBlock
         }));
     }
+
     let code = stubs.join('\n');
     fs.writeFileSync('generated-src/api-methods.stubs.js', code, 'utf-8');
 }
