@@ -22,4 +22,22 @@ describe('DestinyApi', function() {
             .catch(err => done());
     });
 
+    it('promise errors should contain the properties of the bungie error', done => {
+        client.search({
+                membershipType: 777,
+                displayName: 'not a valid membership type'
+            })
+            .then(ok => {
+                done(new Error('promise should not succeed'));
+            })
+            .catch(err => {
+                if (!err.ErrorCode) {
+                    done(new Error('propagated error did not contain the bungie error properties'));
+                }
+                else {
+                    done();
+                }
+            });
+    });
+
 });
