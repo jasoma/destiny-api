@@ -72,7 +72,7 @@ function generateRequestsModule() {
     for (let definition of config) {
         let fileName = './' + definition.name + '-request';
         let key = className(definition);
-        requests.push(`    ${key}: require('fileName')`);
+        requests.push(`    ${key}: require('${fileName}')`);
     }
 
     let exportBlock =

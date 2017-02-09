@@ -89,8 +89,8 @@ class DestinyApi {
             .then(response => handle(response, this.fullResponse));
     }
 
-    activities(parameters) {
-        let request = new requests.ActivitiesRequest(this.apiKey, parameters);
+    characterActivities(parameters) {
+        let request = new requests.CharacterActivitiesRequest(this.apiKey, parameters);
         return request
             .execute(host)
             .then(response => handle(response, this.fullResponse));

@@ -8,7 +8,7 @@ let users = require('./data/users');
 let chance = require('chance').Chance();
 let client = new DestinyApi('f874edae1d7f44099712691966e43523');
 
-describe('DestinyApi.activities', () => {
+describe('DestinyApi.characterActivities', () => {
 
     it('should load activities for a psn account', () => {
         let name = chance.pickone(users.psn.names);
@@ -23,7 +23,7 @@ describe('DestinyApi.activities', () => {
                 });
             })
             .then(response => {
-                return client.activities({
+                return client.characterActivities({
                     membershipType: DestinyApi.psn,
                     destinyMembershipId: response.data.membershipId,
                     characterId: response.data.characters[0].characterBase.characterId
@@ -49,7 +49,7 @@ describe('DestinyApi.activities', () => {
                 });
             })
             .then(response => {
-                return client.activities({
+                return client.characterActivities({
                     membershipType: DestinyApi.xbox,
                     destinyMembershipId: response.data.membershipId,
                     characterId: response.data.characters[0].characterBase.characterId
