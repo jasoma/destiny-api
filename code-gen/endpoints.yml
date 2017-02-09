@@ -373,7 +373,7 @@ grimoire:
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Vanguard%2fGrimoire%2fDefinition%2f
   httpMethod: get
   uriTemplate: Vanguard/Grimoire/Definition/
-  description:
+  description: Gets Grimoire definitions.
 
 character-stats:
   canonicalName: GetHistoricalStats

@@ -27,6 +27,17 @@ function className(endpoint) {
 }
 
 /**
+ * Converts the hyphenated endpoint names from yaml into javascript method names.
+ *
+ * @param {object} endpoint - the endpoint definition parsed from yaml.
+ * @returns {string} - the method name to use for the endpoint.
+ */
+function methodName(endpoint) {
+    var parts = endpoint.name.split('-');
+    return _.camelCase(endpoint.name);
+}
+
+/**
  * Cleans the parameter definitions for an endpoint, removing the description
  * field which is not used by the request code.
  *
@@ -85,8 +96,25 @@ function generateRequestsModule() {
     fs.writeFileSync('requests/requests.js', module, 'utf-8');
 }
 
+function generateMethodStubs() {
+    let template = new Template('code-gen/api-method.template.js');
+    let stubs = [];
+    for (let definition of config) {
+        let jsMethod = methodName(definition);
+        let requestClass = className(definition);
+        stubs.push(template.render({
+            methodName: jsMethod,
+            requestClass: requestClass,
+            description: definition.description
+        }));
+    }
+    let code = stubs.join('\n');
+    fs.writeFileSync('generated-src/api-methods.stubs.js', code, 'utf-8');
+}
+
 generateClasses();
 generateRequestsModule();
+generateMethodStubs();
 
 let classCount = glob.sync('requests/*-request.js').length;
 console.log(`From ${config.length} endpoint definitions`);
