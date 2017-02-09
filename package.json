@@ -1,8 +1,13 @@
 {
   "name": "destiny-api",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "nodejs client for accessing the Destiny API",
+  "keywords": ["destiny"],
   "main": "destiny-api.js",
+  "files": [
+    "destiny-api.js",
+    "requests/"
+  ],
   "dependencies": {
     "lodash": "^4.17.4",
     "request": "^2.79.0",
@@ -24,6 +29,10 @@
     "build": "node generate-request-classes.js",
     "test": "./node_modules/.bin/mocha-parallel-tests test"
   },
-  "author": "jason@jasonmaher.me",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasoma/destiny-api"
+  },
+  "author": "Jason Maher <jason@jasonmaher.me>",
   "license": "MIT"
 }
