@@ -10,6 +10,10 @@ const fs = require('fs');
  * parameter configurations that only contain the description.
  */
 function readParameters(parametersBlock) {
+    if (_.isUndefined(parametersBlock)) {
+        return [];
+    }
+
     let defaults = {
         required: true,
         type: 'path',
