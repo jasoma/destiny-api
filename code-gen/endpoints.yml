@@ -652,7 +652,7 @@ vendor-summary:
       type: query
       required: false
 
-search:
+search-player:
   canonicalName: SearchDestinyPlayer
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=SearchDestinyPlayer%2f%7bmembershipType%7d%2f%7bdisplayName%7d%2f
   httpMethod: get

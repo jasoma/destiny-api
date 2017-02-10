@@ -17,7 +17,7 @@ const parameters = new RequestParameters([{
 }]);
 
 
-class SearchRequest {
+class SearchPlayerRequest {
 
     constructor(apiKey, values) {
         this.apiKey = apiKey;
@@ -49,4 +49,4 @@ class SearchRequest {
     }
 }
 
-module.exports = SearchRequest;
+module.exports = SearchPlayerRequest;

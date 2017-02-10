@@ -11,7 +11,7 @@ let client = new DestinyApi(process.env.API_KEY);
 describe('DestinyApi', function() {
 
     it('request promises should fail if the request fails', done => {
-        client.search({
+        client.searchPlayer({
                 membershipType: 777,
                 displayName: 'not a valid membership type'
             })
@@ -23,7 +23,7 @@ describe('DestinyApi', function() {
     });
 
     it('promise errors should contain the properties of the bungie error', done => {
-        client.search({
+        client.searchPlayer({
                 membershipType: 777,
                 displayName: 'not a valid membership type'
             })

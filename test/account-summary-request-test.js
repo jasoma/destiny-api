@@ -12,7 +12,7 @@ describe('DestinyApi.accountSummary', () => {
 
     it('should load details of a psn account', () => {
         let name = chance.pickone(users.psn.names);
-        return client.search({
+        return client.searchPlayer({
                 membershipType: DestinyApi.psn,
                 displayName: name
             })
@@ -30,7 +30,7 @@ describe('DestinyApi.accountSummary', () => {
 
     it('should load details of an xbox account', () => {
         let name = chance.pickone(users.xbox.names);
-        return client.search({
+        return client.searchPlayer({
                 membershipType: DestinyApi.xbox,
                 displayName: name
             })

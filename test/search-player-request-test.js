@@ -8,11 +8,11 @@ let users = require('./data/users');
 let chance = require('chance').Chance();
 let client = new DestinyApi(process.env.API_KEY);
 
-describe('DestinyApi.search', () => {
+describe('DestinyApi.searchPlayer', () => {
 
     it('should find a psn account', () => {
         let name = chance.pickone(users.psn.names);
-        return client.search({
+        return client.searchPlayer({
                 membershipType: DestinyApi.psn,
                 displayName: name
             })
@@ -21,7 +21,7 @@ describe('DestinyApi.search', () => {
 
     it('should find an xbox account', () => {
         let name = chance.pickone(users.xbox.names);
-        return client.search({
+        return client.searchPlayer({
                 membershipType: DestinyApi.xbox,
                 displayName: name
             })
@@ -29,7 +29,7 @@ describe('DestinyApi.search', () => {
     });
 
     it('should return an empty array for no matches', () => {
-        return client.search({
+        return client.searchPlayer({
                 membershipType: DestinyApi.psn,
                 displayName: 'this is not a username surely'
             })

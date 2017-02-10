@@ -624,11 +624,10 @@ class DestinyApi {
      * @param parameters.membershipType - A valid non-BungieNet membership type, or All.
      * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=SearchDestinyPlayer%2f%7bmembershipType%7d%2f%7bdisplayName%7d%2f">SearchDestinyPlayer</a>
      */
-    search(parameters) {
-        let request = new requests.SearchRequest(this.apiKey, parameters);
+    searchPlayer(parameters) {
+        let request = new requests.SearchPlayerRequest(this.apiKey, parameters);
         return this.execute(request);
     }
-
 
 }
 

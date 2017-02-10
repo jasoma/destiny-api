@@ -14,7 +14,7 @@ describe('DestinyApi.activityHistory', () => {
 
     before(done => {
         let name = chance.pickone(users.psn.names);
-        client.search({
+        client.searchPlayer({
                 membershipType: DestinyApi.psn,
                 displayName: name
             })
@@ -45,7 +45,7 @@ describe('DestinyApi.activityHistory', () => {
 
     it('should load activity history for an xbox account', () => {
         let name = chance.pickone(users.xbox.names);
-        return client.search({
+        return client.searchPlayer({
                 membershipType: DestinyApi.xbox,
                 displayName: name
             })

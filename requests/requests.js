@@ -39,5 +39,5 @@ module.exports = {
     VendorItemRequest: require('./vendor-item-request'),
     VendorItemMetadataRequest: require('./vendor-item-metadata-request'),
     VendorSummaryRequest: require('./vendor-summary-request'),
-    SearchRequest: require('./search-request')
+    SearchPlayerRequest: require('./search-player-request')
 };

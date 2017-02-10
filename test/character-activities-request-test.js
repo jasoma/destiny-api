@@ -12,7 +12,7 @@ describe('DestinyApi.characterActivities', () => {
 
     it('should load activities for a psn account', () => {
         let name = chance.pickone(users.psn.names);
-        return client.search({
+        return client.searchPlayer({
                 membershipType: DestinyApi.psn,
                 displayName: name
             })
@@ -38,7 +38,7 @@ describe('DestinyApi.characterActivities', () => {
 
     it('should load activities for an xbox account', () => {
         let name = chance.pickone(users.xbox.names);
-        return client.search({
+        return client.searchPlayer({
                 membershipType: DestinyApi.xbox,
                 displayName: name
             })
