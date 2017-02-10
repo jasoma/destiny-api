@@ -86,7 +86,8 @@ class DestinyApi {
      * @param parameters.membershipType - A valid non-BungieNet membership type.
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fSummary%2f">GetAccountSummary</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fSummary%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetAccountSummary">Community API Reference</a>
      */
     accountSummary(parameters) {
         let request = new requests.AccountSummaryRequest(this.apiKey, parameters);
@@ -110,7 +111,8 @@ class DestinyApi {
       PrivateMatchesAll
     uses None if not specified which returns history for all activities
 
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fActivityHistory%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f">GetActivityHistory</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fActivityHistory%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetActivityHistory">Community API Reference</a>
      */
     activityHistory(parameters) {
         let request = new requests.ActivityHistoryRequest(this.apiKey, parameters);
@@ -124,7 +126,8 @@ class DestinyApi {
      * @param parameters.membershipType - A valid non-BungieNet membership type.
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fAdvisors%2f">GetAdvisorsForAccount</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fAdvisors%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetAdvisorsForAccount">Community API Reference</a>
      */
     accountAdvisors(parameters) {
         let request = new requests.AccountAdvisorsRequest(this.apiKey, parameters);
@@ -139,7 +142,8 @@ class DestinyApi {
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param parameters.characterId - The Character ID for which we want the Advisor.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fAdvisors%2fV2%2f">GetAdvisorsForCharacterV2</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fAdvisors%2fV2%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetAdvisorsForCharacterV2">Community API Reference</a>
      */
     characterAdvisors(parameters) {
         let request = new requests.CharacterAdvisorsRequest(this.apiKey, parameters);
@@ -153,7 +157,8 @@ class DestinyApi {
      * @param parameters.membershipType - A valid non-BungieNet membership type.
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fItems%2f">GetAccountItemsSummary</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fItems%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetAccountItemsSummary">Community API Reference</a>
      */
     accountItems(parameters) {
         let request = new requests.AccountItemsRequest(this.apiKey, parameters);
@@ -168,7 +173,8 @@ class DestinyApi {
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param parameters.characterId - ID of the character.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fActivities%2f">GetCharacterActivities</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fActivities%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetCharacterActivities">Community API Reference</a>
      */
     characterActivities(parameters) {
         let request = new requests.CharacterActivitiesRequest(this.apiKey, parameters);
@@ -183,7 +189,8 @@ class DestinyApi {
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param parameters.characterId - ID of the character.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fInventory%2fSummary%2f">GetCharacterInventorySummary</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fInventory%2fSummary%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetCharacterInventorySummary">Community API Reference</a>
      */
     characterInventory(parameters) {
         let request = new requests.CharacterInventoryRequest(this.apiKey, parameters);
@@ -198,7 +205,8 @@ class DestinyApi {
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param parameters.characterId - ID of the character.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fProgression%2f">GetCharacterProgression</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fProgression%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetCharacterProgression">Community API Reference</a>
      */
     characterProgression(parameters) {
         let request = new requests.CharacterProgressionRequest(this.apiKey, parameters);
@@ -213,7 +221,8 @@ class DestinyApi {
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param parameters.characterId - ID of the character.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2f">GetCharacterSummary</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetCharacterSummary">Community API Reference</a>
      */
     characterSummary(parameters) {
         let request = new requests.CharacterSummaryRequest(this.apiKey, parameters);
@@ -228,7 +237,8 @@ class DestinyApi {
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param parameters.characterId - The specific character whose activities should be returned.
      * @param [parameters.definitions] - Client would like activity definition returned in response.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fAggregateActivityStats%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f">GetDestinyAggregateActivityStats</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fAggregateActivityStats%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetDestinyAggregateActivityStats">Community API Reference</a>
      */
     aggregateStats(parameters) {
         let request = new requests.AggregateStatsRequest(this.apiKey, parameters);
@@ -257,7 +267,8 @@ class DestinyApi {
      * @param [parameters.order] - Item property used for sorting. Use Name, ItemType, Rarity, ItemTypeName, ItemStatHash, MinimumRequiredLevel, MaximumRequiredLevel.
      * @param [parameters.orderstathash] - This value is used when the order parameter is set to ItemStatHash. The item stat for the provided hash value will be used in the sort.
      * @param [parameters.direction] - Order to sort items: Ascending or Descending
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Explorer%2fItems%2f">GetDestinyExplorerItems</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Explorer%2fItems%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetDestinyExplorerItems">Community API Reference</a>
      */
     exploreItems(parameters) {
         let request = new requests.ExploreItemsRequest(this.apiKey, parameters);
@@ -278,7 +289,8 @@ class DestinyApi {
      * @param [parameters.guardianAttributes] - Node steps in one of these categories, omit for all steps. Stats, Shields, Health, Revive, AimUnderFire, Radar, Invisibility, Reputations
      * @param [parameters.lightAbilities] - Node steps in one of these categories, omit for all steps. Grenades, Melee, MovementModes, Orbs, SuperEnergy, SuperMods
      * @param [parameters.damageTypes] - Node steps in one of these categories, omit for all steps. Kinetic, Arc, Solar, Void
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Explorer%2fTalentNodeSteps%2f">GetDestinyExplorerTalentNodeSteps</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Explorer%2fTalentNodeSteps%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetDestinyExplorerTalentNodeSteps">Community API Reference</a>
      */
     exploreTalentNodes(parameters) {
         let request = new requests.ExploreTalentNodesRequest(this.apiKey, parameters);
@@ -289,7 +301,8 @@ class DestinyApi {
      * Returns the current version of the manifest as a json object.
      *
      * @param parameters - the parameters to pass in the request.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Manifest%2f">GetDestinyManifest</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Manifest%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetDestinyManifest">Community API Reference</a>
      */
     manifest(parameters) {
         let request = new requests.ManifestRequest(this.apiKey, parameters);
@@ -304,7 +317,8 @@ class DestinyApi {
      * @param parameters.id - The hash ID of the definition instance.
      * @param [parameters.version] - The version of content to be returned, if that version exists. No, you can't look into the future by changing this, it doesn't exist. Nice try though.
      * @param [parameters.definitions] - If true, related definitions will be returned.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Manifest%2f%7btype%7d%2f%7bid%7d%2f">GetDestinySingleDefinition</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Manifest%2f%7btype%7d%2f%7bid%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetDestinySingleDefinition">Community API Reference</a>
      */
     manifestItem(parameters) {
         let request = new requests.ManifestItemRequest(this.apiKey, parameters);
@@ -320,7 +334,8 @@ class DestinyApi {
      * @param [parameters.definitions] - Indicates the card definition should be returned when player data
      * @param [parameters.flavour] - Indicates flavour stats should be included with player card data.
      * @param [parameters.single] - Indicates data for a single card should be returned.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Vanguard%2fGrimoire%2f%7bmembershipType%7d%2f%7bmembershipId%7d%2f">GetGrimoireByMembership</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Vanguard%2fGrimoire%2f%7bmembershipType%7d%2f%7bmembershipId%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetGrimoireByMembership">Community API Reference</a>
      */
     accountGrimoire(parameters) {
         let request = new requests.AccountGrimoireRequest(this.apiKey, parameters);
@@ -331,7 +346,8 @@ class DestinyApi {
      * Gets Grimoire definitions.
      *
      * @param parameters - the parameters to pass in the request.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Vanguard%2fGrimoire%2fDefinition%2f">GetGrimoireDefinition</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Vanguard%2fGrimoire%2fDefinition%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetGrimoireDefinition">Community API Reference</a>
      */
     grimoire(parameters) {
         let request = new requests.GrimoireRequest(this.apiKey, parameters);
@@ -352,7 +368,8 @@ class DestinyApi {
      * @param [parameters.periodType] - Indicates a specific period type to return. Optional. May be: Daily, Monthly, AllTime, or Activity
      * @param [parameters.modes] - Game modes to return. Values: None, Story, Strike, Raid, AllPvP, Patrol, AllPvE, PvPIntroduction, ThreeVsThree, Control, Lockdown, Team, FreeForAll, Nightfall, Heroic, AllStrikes, IronBanner, AllArena, Arena, ArenaChallenge, TrialsOfOsiris, Elimination, Rift, Mayhem, ZoneControl, Racing, Supremacy, PrivateMatchesAll
      * @param [parameters.groups] - Group of stats to include, otherwise only general stats are returned. Comma separated list is allowed. Values: General, Weapons, Medals, Enemies
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f">GetHistoricalStats</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetHistoricalStats">Community API Reference</a>
      */
     characterStats(parameters) {
         let request = new requests.CharacterStatsRequest(this.apiKey, parameters);
@@ -363,7 +380,8 @@ class DestinyApi {
      * Gets historical stats definitions.
      *
      * @param parameters - the parameters to pass in the request.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fDefinition%2f">GetHistoricalStatsDefinition</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fDefinition%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetHistoricalStatsDefinition">Community API Reference</a>
      */
     statsDefinitions(parameters) {
         let request = new requests.StatsDefinitionsRequest(this.apiKey, parameters);
@@ -377,7 +395,8 @@ class DestinyApi {
      * @param parameters.membershipType - A valid non-BungieNet membership type.
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param [parameters.groups] - Groups of stats to include, otherwise only general stats are returned. Comma separated list is allowed. Values: General, Weapons, Medals, Enemies.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fAccount%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f">GetHistoricalStatsForAccount</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fAccount%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetHistoricalStatsForAccount">Community API Reference</a>
      */
     accountStats(parameters) {
         let request = new requests.AccountStatsRequest(this.apiKey, parameters);
@@ -393,7 +412,8 @@ class DestinyApi {
      * @param parameters.characterId - The specific character whose activities should be returned.
      * @param parameters.itemInstanceId - The Instance ID of the destiny item. Not the Reference ID, pay attention.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fInventory%2f%7bitemInstanceId%7d%2f">GetItemDetail</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fInventory%2f%7bitemInstanceId%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetItemDetail">Community API Reference</a>
      */
     itemDetail(parameters) {
         let request = new requests.ItemDetailRequest(this.apiKey, parameters);
@@ -409,7 +429,8 @@ class DestinyApi {
      * @param parameters.characterId - The specific character whose activities should be returned.
      * @param parameters.itemHash - The *hash* (i.e. item reference ID) of the item, and *not* a specific instance ID.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fItemReference%2f%7bitemHash%7d%2f">GetItemReferenceDetail</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fItemReference%2f%7bitemHash%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetItemReferenceDetail">Community API Reference</a>
      */
     itemReferenceDetail(parameters) {
         let request = new requests.ItemReferenceDetailRequest(this.apiKey, parameters);
@@ -423,7 +444,8 @@ class DestinyApi {
      * @param parameters.displayName - A display name meeting the parameters of display names for the specified membership type (i.e., a gamertag, or a PSN Id)
      * @param parameters.membershipType - A valid non-BungieNet membership type, or All.
      * @param [parameters.ignorecase] - Default is false when not specified. True to cause a caseless search to be used.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fStats%2fGetMembershipIdByDisplayName%2f%7bdisplayName%7d%2f">GetMembershipIdByDisplayName</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fStats%2fGetMembershipIdByDisplayName%2f%7bdisplayName%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetMembershipIdByDisplayName">Community API Reference</a>
      */
     searchMembership(parameters) {
         let request = new requests.SearchMembershipRequest(this.apiKey, parameters);
@@ -436,7 +458,8 @@ class DestinyApi {
      * @param parameters - the parameters to pass in the request.
      * @param parameters.activityId - The ID of the activity whose PGCR is requested.
      * @param [parameters.definitions] - Client would like activity and weapon definitions returned in response.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fPostGameCarnageReport%2f%7bactivityId%7d%2f">GetPostGameCarnageReport</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fPostGameCarnageReport%2f%7bactivityId%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetPostGameCarnageReport">Community API Reference</a>
      */
     carnageReport(parameters) {
         let request = new requests.CarnageReportRequest(this.apiKey, parameters);
@@ -448,7 +471,8 @@ class DestinyApi {
      *
      * @param parameters - the parameters to pass in the request.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Advisors%2fV2%2f">GetPublicAdvisorsV2</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Advisors%2fV2%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetPublicAdvisorsV2">Community API Reference</a>
      */
     publicAdvisors(parameters) {
         let request = new requests.PublicAdvisorsRequest(this.apiKey, parameters);
@@ -462,7 +486,8 @@ class DestinyApi {
      * @param parameters.membershipType - A valid non-BungieNet membership type.
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fTriumphs%2f">GetTriumphs</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fTriumphs%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetTriumphs">Community API Reference</a>
      */
     triumphs(parameters) {
         let request = new requests.TriumphsRequest(this.apiKey, parameters);
@@ -477,7 +502,8 @@ class DestinyApi {
      * @param parameters.destinyMembershipId - Destiny membership ID.
      * @param parameters.characterId - The id of the character to retrieve.
      * @param [parameters.definitions] - True if item definitions should be returned in response.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fUniqueWeapons%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f">GetUniqueWeaponHistory</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fUniqueWeapons%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/GetUniqueWeaponHistory">Community API Reference</a>
      */
     weaponHistory(parameters) {
         let request = new requests.WeaponHistoryRequest(this.apiKey, parameters);
@@ -490,13 +516,13 @@ class DestinyApi {
      * @param parameters - the parameters to pass in the request.
      * @param parameters.displayName - The full gamertag or PSN id of the player. Spaces and case are ignored.
      * @param parameters.membershipType - A valid non-BungieNet membership type, or All.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=SearchDestinyPlayer%2f%7bmembershipType%7d%2f%7bdisplayName%7d%2f">SearchDestinyPlayer</a>
+     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=SearchDestinyPlayer%2f%7bmembershipType%7d%2f%7bdisplayName%7d%2f">Official Bungie Reference</a>
+     * @see <a href="http://bungienetplatform.wikia.com/wiki/SearchDestinyPlayer">Community API Reference</a>
      */
     searchPlayer(parameters) {
         let request = new requests.SearchPlayerRequest(this.apiKey, parameters);
         return this.execute(request);
     }
-
 
 }
 
