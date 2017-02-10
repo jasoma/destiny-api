@@ -50,7 +50,7 @@ function readParameters(parametersBlock) {
  * @returns {object} - an endpoint definition generated from the configuration.
  */
 function readEndpoint(name, values) {
-    let definition = { name: name };
+    let definition = { name: name, signIn: false };
     _.assign(definition, values);
     definition.parameters = readParameters(values.parameters);
     return definition;
@@ -69,7 +69,9 @@ function load(file) {
     for (let name of Object.keys(config)) {
         endpoints.push(readEndpoint(name, config[name]));
     }
-    return endpoints;
+
+    // cannot yet handle the endpoints that require authorization
+    return _.filter(endpoints, e => !e.signIn);
 }
 
 module.exports = load;

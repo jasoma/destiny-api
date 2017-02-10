@@ -9,8 +9,6 @@ module.exports = {
     AccountAdvisorsRequest: require('./account-advisors-request'),
     CharacterAdvisorsRequest: require('./character-advisors-request'),
     AccountItemsRequest: require('./account-items-request'),
-    BondAdvisorsRequest: require('./bond-advisors-request'),
-    CharacterRequest: require('./character-request'),
     CharacterActivitiesRequest: require('./character-activities-request'),
     CharacterInventoryRequest: require('./character-inventory-request'),
     CharacterProgressionRequest: require('./character-progression-request'),
@@ -30,14 +28,7 @@ module.exports = {
     SearchMembershipRequest: require('./search-membership-request'),
     CarnageReportRequest: require('./carnage-report-request'),
     PublicAdvisorsRequest: require('./public-advisors-request'),
-    RecordBookStatusRequest: require('./record-book-status-request'),
     TriumphsRequest: require('./triumphs-request'),
     WeaponHistoryRequest: require('./weapon-history-request'),
-    VaultSummaryRequest: require('./vault-summary-request'),
-    VendorsRequest: require('./vendors-request'),
-    VendorsMetadataRequest: require('./vendors-metadata-request'),
-    VendorItemRequest: require('./vendor-item-request'),
-    VendorItemMetadataRequest: require('./vendor-item-metadata-request'),
-    VendorSummaryRequest: require('./vendor-summary-request'),
     SearchPlayerRequest: require('./search-player-request')
 };

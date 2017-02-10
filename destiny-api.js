@@ -161,34 +161,6 @@ class DestinyApi {
     }
 
     /**
-     * Returns the set of Advisor data specific to Bonds between the given Account. The currently logged-in user must own this character with a Destiny account of the given Membership Type.
-     *
-     * @param parameters - the parameters to pass in the request.
-     * @param parameters.membershipType - A valid non-BungieNet membership type.
-     * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fAdvisors%2fBonds%2f">GetBondAdvisors</a>
-     */
-    bondAdvisors(parameters) {
-        let request = new requests.BondAdvisorsRequest(this.apiKey, parameters);
-        return this.execute(request);
-    }
-
-    /**
-     * Returns all character information for the supplied character.
-     *
-     * @param parameters - the parameters to pass in the request.
-     * @param parameters.membershipType - A valid non-BungieNet membership type.
-     * @param parameters.destinyMembershipId - Destiny membership ID.
-     * @param parameters.characterId - ID of the character.
-     * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fAccount%2f%7bdestinyMembershipId%7d%2fCharacter%2f%7bcharacterId%7d%2fComplete%2f">GetCharacter</a>
-     */
-    character(parameters) {
-        let request = new requests.CharacterRequest(this.apiKey, parameters);
-        return this.execute(request);
-    }
-
-    /**
      * Loads all activities available to a character
      *
      * @param parameters - the parameters to pass in the request.
@@ -484,20 +456,6 @@ class DestinyApi {
     }
 
     /**
-     * Provides Record Book completion status for your Destiny account. Returned as a separate endpoint because it could have potentially sensitive information.
-     *
-     * @param parameters - the parameters to pass in the request.
-     * @param parameters.membershipType - A valid non-BungieNet membership type.
-     * @param parameters.recordBookHash - The Hash Identifier of a Record Book for which to get completion status.
-     * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fRecordBooks%2f%7brecordBookHash%7d%2fCompletion%2f">GetRecordBookCompletionStatus</a>
-     */
-    recordBookStatus(parameters) {
-        let request = new requests.RecordBookStatusRequest(this.apiKey, parameters);
-        return this.execute(request);
-    }
-
-    /**
      * Provides Triumphs for a given Destiny account.
      *
      * @param parameters - the parameters to pass in the request.
@@ -527,96 +485,6 @@ class DestinyApi {
     }
 
     /**
-     * Returns summary information for the vault for the account of the given Membership Type. You must have an account linked for this membership type for it to work.
-     *
-     * @param parameters - the parameters to pass in the request.
-     * @param parameters.membershipType - A valid non-BungieNet membership type.
-     * @param [parameters.accountId] - Destiny membership ID of another user if you want to try to peek at their vault. You may be denied.
-     * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fVault%2fSummary%2f">GetVaultSummary</a>
-     */
-    vaultSummary(parameters) {
-        let request = new requests.VaultSummaryRequest(this.apiKey, parameters);
-        return this.execute(request);
-    }
-
-    /**
-     * Returns vendor data for the given character and vendor hash. The currently logged-in user must own this character with a Destiny account of the given Membership Type.
-     *
-     * @param parameters - the parameters to pass in the request.
-     * @param parameters.membershipType - A valid non-BungieNet membership type.
-     * @param parameters.characterId - The Destiny Character ID of the character for whom we're getting vendor info.
-     * @param parameters.vendorHash - The Hash Identifier of the Vendor for whom you're getting info.
-     * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendor%2f%7bvendorHash%7d%2f">GetVendorForCurrentCharacter</a>
-     */
-    vendors(parameters) {
-        let request = new requests.VendorsRequest(this.apiKey, parameters);
-        return this.execute(request);
-    }
-
-    /**
-     * Returns vendor data for the given character and vendor hash, along with any secondary metadata for the vendor and their items. The currently logged-in user must own this character with a Destiny account of the given Membership Type.
-     *
-     * @param parameters - the parameters to pass in the request.
-     * @param parameters.membershipType - A valid non-BungieNet membership type.
-     * @param parameters.characterId - The Destiny Character ID of the character for whom we're getting vendor info.
-     * @param parameters.vendorHash - The Hash Identifier of the Vendor for whom you're getting info.
-     * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendor%2f%7bvendorHash%7d%2fMetadata%2f">GetVendorForCurrentCharacterWithMetadata</a>
-     */
-    vendorsMetadata(parameters) {
-        let request = new requests.VendorsMetadataRequest(this.apiKey, parameters);
-        return this.execute(request);
-    }
-
-    /**
-     *
-     *
-     * @param parameters - the parameters to pass in the request.
-     * @param parameters.membershipType - A valid non-BungieNet membership type.
-     * @param parameters.characterId - The Destiny Character ID of the character for whom we're getting vendor info.
-     * @param parameters.vendorHash - The Hash Identifier of the Vendor for whom you're getting info.
-     * @param parameters.vendorItemIndex - The Vendor Item Index of the Vendor item for whom you seek additional details. Caveat emptor: you should not be using archived Vendor data to seed this value, as vendor item indexes may change between content versions.
-     * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendor%2f%7bvendorHash%7d%2fItem%2f%7bvendorItemIndex%7d%2f">GetVendorItemDetailForCurrentCharacter</a>
-     */
-    vendorItem(parameters) {
-        let request = new requests.VendorItemRequest(this.apiKey, parameters);
-        return this.execute(request);
-    }
-
-    /**
-     * Returns vendor data for the given character and vendor hash. The currently logged-in user must own this character with a Destiny account of the given Membership Type. Includes various bits of interesting metadata that might not be useful for some.
-     *
-     * @param parameters - the parameters to pass in the request.
-     * @param parameters.membershipType - A valid non-BungieNet membership type.
-     * @param parameters.characterId - The Destiny Character ID of the character for whom we're getting vendor info.
-     * @param parameters.vendorHash - The Hash Identifier of the Vendor for whom you're getting info.
-     * @param parameters.vendorItemIndex - The Vendor Item Index of the Vendor item for whom you seek additional details. Caveat emptor: you should not be using archived Vendor data to seed this value, as vendor item indexes may change between content versions.
-     * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendor%2f%7bvendorHash%7d%2fItem%2f%7bvendorItemIndex%7d%2fMetadata%2f">GetVendorItemDetailForCurrentCharacterWithMetadata</a>
-     */
-    vendorItemMetadata(parameters) {
-        let request = new requests.VendorItemMetadataRequest(this.apiKey, parameters);
-        return this.execute(request);
-    }
-
-    /**
-     * Returns the set of vendor data for the given character. The currently logged-in user must own this character with a Destiny account of the given Membership Type.
-     *
-     * @param parameters - the parameters to pass in the request.
-     * @param parameters.membershipType - A valid non-BungieNet membership type.
-     * @param parameters.characterId - The Destiny Character ID of the character for whom we're getting vendor info.
-     * @param [parameters.definitions] - If False, will not return definition information.
-     * @see <a href="https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=%7bmembershipType%7d%2fMyAccount%2fCharacter%2f%7bcharacterId%7d%2fVendors%2fSummaries%2f">GetVendorSummariesForCurrentCharacter</a>
-     */
-    vendorSummary(parameters) {
-        let request = new requests.VendorSummaryRequest(this.apiKey, parameters);
-        return this.execute(request);
-    }
-
-    /**
      * Returns a list of Destiny memberships given a full Gamertag or PSN ID.
      *
      * @param parameters - the parameters to pass in the request.
@@ -628,6 +496,7 @@ class DestinyApi {
         let request = new requests.SearchPlayerRequest(this.apiKey, parameters);
         return this.execute(request);
     }
+
 
 }
 
