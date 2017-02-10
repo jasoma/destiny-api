@@ -5,7 +5,7 @@ const request = require('request-promise');
 const Promise = require('bluebird');
 const RequestParameters = require('./request-parameters');
 
-const uriTemplate = _.template('Stats/Account/{membershipType}/{destinyMembershipId}/');
+const uriTemplate = _.template('Stats/Account/${membershipType}/${destinyMembershipId}/');
 const parameters = new RequestParameters([{
     "required": true,
     "type": "path",

@@ -38,6 +38,7 @@ function simplifyAccount(account) {
     return {
         displayName: account.displayName,
         destinyMembershipId: account.membershipId,
+        membershipId: account.membershipId,
         membershipType: account.membershipType,
         characterIds: _.map(account.characters, 'characterBase.characterId')
     };

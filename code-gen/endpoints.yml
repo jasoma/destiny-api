@@ -182,7 +182,7 @@ aggregate-stats:
   canonicalName: GetDestinyAggregateActivityStats
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fAggregateActivityStats%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f%7bcharacterId%7d%2f
   httpMethod: get
-  uriTemplate: ${membershipType}/{destinyMembershipId}/${characterId}/
+  uriTemplate: Stats/AggregateActivityStats/${membershipType}/${destinyMembershipId}/${characterId}/
   description: Gets all activities the character has participated in together with aggregate statistics for those activities.
   parameters:
     membershipType: A valid non-BungieNet membership type.
@@ -428,7 +428,7 @@ account-stats:
   canonicalName: GetHistoricalStatsForAccount
   bungieDocs: https://www.bungie.net/platform/destiny/help/HelpDetail/GET?uri=Stats%2fAccount%2f%7bmembershipType%7d%2f%7bdestinyMembershipId%7d%2f
   httpMethod: get
-  uriTemplate: Stats/Account/{membershipType}/{destinyMembershipId}/
+  uriTemplate: Stats/Account/${membershipType}/${destinyMembershipId}/
   description: Gets aggregate historical stats organized around each character for a given account.
   parameters:
     membershipType: A valid non-BungieNet membership type.
