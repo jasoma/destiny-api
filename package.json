@@ -24,13 +24,15 @@
     "chance": "^1.0.4",
     "docdash": "^0.4.0",
     "glob": "^7.1.1",
+    "js-beautify": "^1.6.8",
     "js-yaml": "^3.7.0",
     "mocha": "^3.2.0",
     "mocha-parallel-tests": "^1.2.5"
   },
   "scripts": {
     "build": "node generate-request-classes.js",
-    "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json",
+    "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
+    "postdocs": "node pretty-docs.js",
     "test": "./node_modules/.bin/mocha-parallel-tests test"
   },
   "repository": {

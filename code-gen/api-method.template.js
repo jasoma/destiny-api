@@ -2,7 +2,7 @@
  * ${description}
  *
  * @param parameters - the parameters to pass in the request.${parameterDefinitions}
- * @see {@link ${bungieDocs}|${canonicalName}}
+ * @see <a href="${bungieDocs}">${canonicalName}</a>
  */
 ${methodName}(parameters) {
     let request = new requests.${requestClass}(this.apiKey, parameters);
