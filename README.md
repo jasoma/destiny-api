@@ -1,5 +1,3 @@
-# destiny-api
-
 A nodejs client for the [Destiny API](https://www.bungie.net/platform/destiny/help/). Currently implements all public requests.
 
 ## Getting started
@@ -7,13 +5,13 @@ A nodejs client for the [Destiny API](https://www.bungie.net/platform/destiny/he
 Install the package.
 
 ```bash
-  npm install --save destiny-api
+  npm install --save destiny-api-client
 ```
 
 Create a client with your applications api key and start making requests.
 
 ```js
-const DestinyApi = require('destiny-api');
+const DestinyApi = require('destiny-api-client');
 
 let client = new DestinyApi('your-api-key');
 

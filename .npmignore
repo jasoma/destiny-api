@@ -1,0 +1,8 @@
+docs
+code-gen
+generated-src
+test
+.envrc
+jsdoc.json
+pretty-docs.js
+generate-request-classes.js

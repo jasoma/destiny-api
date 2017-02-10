@@ -1,5 +1,5 @@
 {
-  "name": "destiny-api",
+  "name": "destiny-api-client",
   "version": "0.1.0",
   "description": "nodejs client for accessing the Destiny API",
   "keywords": [
