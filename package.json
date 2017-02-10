@@ -33,6 +33,7 @@
     "build": "node generate-request-classes.js",
     "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
     "postdocs": "node pretty-docs.js",
+    "pretest": "node test/data/fetch-accounts.js",
     "test": "./node_modules/.bin/mocha-parallel-tests test"
   },
   "repository": {

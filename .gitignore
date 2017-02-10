@@ -1,6 +1,7 @@
 # project specific
 generated-src
 .envrc
+test/data/users.json
 
 # Created by https://www.gitignore.io/api/node
 
